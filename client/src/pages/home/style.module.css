@@ -1,0 +1,158 @@
+/* Container for centering the form */
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(131, 141, 222);
+}
+
+/* Form container styling */
+.formContainer {
+  width: 400px;
+  padding: 32px;
+  background: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Input fields styling */
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgb(63, 73, 204);
+  font-size: 1rem;
+}
+
+/* Chat container layout */
+.chatContainer {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: flex;
+  /* grid-template-columns: 1fr 4fr;
+  gap: 20px; */
+}
+
+/* Room and users column styling */
+.roomAndUsersColumn {
+  border-right: 1px solid #dfdfdf;
+  padding: 20px;
+  background: #1a1a2e;
+  border-radius: 10px;
+}
+
+/* Room title styling */
+.roomTitle {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* Users title styling */
+.usersTitle {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* Users list styling */
+.usersList {
+  list-style-type: none;
+  padding-left: 0;
+  color: rgb(153, 217, 234);
+}
+
+.usersList li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+/* .adi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+/* Messages column styling */
+.messagesColumn {
+  height: 80vh;
+ 
+  overflow-y: auto; 
+  
+  padding: 20px;
+  background: #4fc9f6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2px;
+  
+}
+
+/* Individual message styling */
+.message {
+  background: rgb(0, 24, 111);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  padding: 16px;
+  max-width: 600px;
+  word-wrap: break-word;
+  color: #fff;
+}
+
+/* Metadata for each message (username and timestamp) */
+.msgMeta {
+  color: rgb(153, 217, 234);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+/* Message text */
+.msgText {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Send message container styling */
+.sendMessageContainer {
+  padding: 20px;
+  background: #1a1a2e;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Message input field styling */
+.messageInput {
+  flex: 1;
+  padding: 14px;
+  margin-right: 16px;
+  border-radius: 6px;
+  border: 1px solid rgb(153, 217, 234);
+  font-size: 1rem;
+  background: #fff;
+}
+
+/* Send button styling */
+.sendButton {
+  padding: 14px 20px;
+  background: rgb(63, 73, 204);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sendButton:hover {
+  background: rgb(50, 60, 180);
+}
