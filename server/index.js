@@ -18,7 +18,7 @@ const { connected } = require("process");
 async function main() {
   try {
     await mongoose.connect(
-      "mongodb+srv://officialiitianaditya:Aditya9410@cluster0.isqcqqp.mongodb.net/"
+      "mongodb+srv://officialiitianaditya:*@cluster0.isqcqqp.mongodb.net/"
     );
     console.log("databses connected");
     // Other code that depends on the successful connection
