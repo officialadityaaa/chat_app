@@ -9,8 +9,9 @@ const Messages = ({ socket }) => {
   // Runs whenever a socket event is recieved from the server
   useEffect(() => {
     socket.on('receive_message', (data) => {
+     console.log("dd");
       console.log(data);
-    
+      console.log("dd");
       setMessagesReceived((state) => [
         ...state,
         {
@@ -19,6 +20,9 @@ const Messages = ({ socket }) => {
           __createdtime__: data.__createdtime__,
         },
       ]);
+
+
+      // console.log(messagesRecieved);
     });
 
 
