@@ -18,7 +18,7 @@ const { connected } = require("process");
 async function main() {
   try {
     await mongoose.connect(
-      "mongodb+srv://officialiitianaditya:*@cluster0.isqcqqp.mongodb.net/"
+      "mongodb+srv://officialiitianaditya:Aditya9410@cluster0.isqcqqp.mongodb.net/"
     );
     console.log("databses connected");
     // Other code that depends on the successful connection
@@ -48,7 +48,6 @@ async function getMessages(room) {
     throw error;
   }
 }
-
 io.on("connection", (socket) => {
   console.log(`CONNECTED USER ${socket.id}`);
 
@@ -64,40 +63,48 @@ io.on("connection", (socket) => {
       message,
       __createdtime__,
     });
-   
-    // console.log(bc);
 
-    socket.emit("receive_message", {
-      message: message,
-      username: username,
-      __createdtime__,
-    });
-
-    let bc = await newMessage.save();
+    try {
+      console.log("lss before save");
+      let bc = await newMessage.save();
+      console.log("lss after save");
+//socket to send message to everyone in same room excepr itseld
+      io.in(room).emit("receive_message", {
+        message: message,
+        username: username,
+        __createdtime__,
+      });
+    } catch (error) {
+      console.error("Error saving message:", error);
+    }
   });
-  socket.on("join_room", async(data) => {
-    const { username, room } = data; // Data sent from client when join_room event emitted
-    socket.join(room); // Join the user to a socket room
-    // console.log(data);
-    let __createdtime__ = Date.now(); // Current timestamp
-    // Send message to all users currently in the room, apart from the user that just joined
+
+  socket.on("join_room", async (data) => {
+    const { username, room } = data;
+    socket.join(room);
+
+    let __createdtime__ = Date.now();
     socket.to(room).emit("receive_message", {
       message: `${username} has joined the chat room`,
-      username: CHAT_BOT,
+      username: "CHAT_BOT",
       __createdtime__,
     });
+
     socket.emit("receive_message", {
       message: `Welcome ${username}`,
-      username: CHAT_BOT,
+      username: "CHAT_BOT",
       __createdtime__,
     });
 
-
-    const messages = await getMessages(room);
-    // console.log(messages);
-    socket.emit('last_100_messages', JSON.stringify(messages));
+    try {
+      const messages = await getMessages(room);
+      socket.emit('last_100_messages', JSON.stringify(messages));
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
   });
 });
+
 
 app.get("/", (req, res) => {
   res.send("Server is running");
